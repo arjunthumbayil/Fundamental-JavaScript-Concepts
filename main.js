@@ -1,20 +1,11 @@
-console.log("start");
+const proms1 = Promise.resolve("Coming from promise-resolve");
 
-const proms = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    const result = true;
-    if (result) {
-      resolve("This is coming from proms.");
-    } else reject(new Error("The request didn't go through!"));
-  }, 2000);
-});
+console.log(proms1);
 
-proms
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+proms1.then((res) => console.log(res));
 
-console.log("stop");
+const proms2 = Promise.reject("Err - Coming from promise-reject");
+
+console.log(proms2);
+
+proms2.then((res) => console.log(res)).catch((err) => console.error(err));
