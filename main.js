@@ -1,11 +1,28 @@
-const proms1 = Promise.resolve("Coming from promise-resolve");
+function importantAction1(message, callback) {
+  setTimeout(() => {
+    callback(`Step 1 - ${message}`);
+  }, 200);
+}
 
-console.log(proms1);
+function importantAction2(msg, cb) {
+  setTimeout(() => {
+    cb(`Step 2 - ${msg}`);
+  }, 600);
+}
 
-proms1.then((res) => console.log(res));
+function importantAction3(msg, cb) {
+  setTimeout(() => {
+    cb(`Step 3 - ${msg}`);
+  }, 1000);
+}
 
-const proms2 = Promise.reject("Err - Coming from promise-reject");
+const msg = importantAction1("I would say that,", function (message) {
+  console.log(message);
+  importantAction2("this example is awesome!", (msg) => console.log(msg));
+  importantAction3(
+    "I think I am understanding call back hell and pyramid of doom!",
+    (msg) => console.log(msg)
+  );
+});
 
-console.log(proms2);
-
-proms2.then((res) => console.log(res)).catch((err) => console.error(err));
+// Well, comes to rescue promises!
