@@ -1,20 +1,49 @@
 //Promises in JavaScript
 
-//Question 2 - What is the output?
+//Question 3 - What is the output?
 
 console.log("start");
 
-const promise1 = new Promise((resolve, reject) => {
-  console.log(1);
-  resolve(2);
-  console.log(3);
-});
+const fn = () => {
+  return new Promise((resolve, reject) => {
+    console.log(1);
+    resolve("success");
+  });
+};
 
-promise1.then((res) => {
+console.log("middle");
+
+fn().then((res) => {
   console.log(res);
 });
 
 console.log("end");
+
+/* Correct Output
+start
+middle
+1
+end
+success
+
+Got it right, duh!
+ */
+
+//Question 2 - What is the output?
+
+// console.log("start");
+
+// const promise1 = new Promise((resolve, reject) => {
+//   console.log(1);
+//   resolve(2);
+//   console.log(3);
+// });
+
+// promise1.then((res) => {
+//   console.log(res);
+// });
+
+// console.log("end");
 
 /* Correct Output
 start
