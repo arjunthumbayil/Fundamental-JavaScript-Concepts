@@ -17,15 +17,15 @@ function importantAction2(msg) {
 function importantAction3(msg) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(`Step 3 - ${msg}`);
+      resolve(`Step 3 - ${msg}`);
     }, 10);
   });
 }
 
-// Below is Promise combinators - promise.race - retuens the one which
-// fails or succeeds first.
+// Below is Promise combinators - promise.allSettled - works exactly
+// like promise.all, but returns failed ones as well as the fullfilled promises.
 
-Promise.race([
+Promise.allSettled([
   importantAction1("I would say that,"),
   importantAction2("this example is awesome!"),
   importantAction3("Trying to appreciate promises!"),
@@ -33,6 +33,18 @@ Promise.race([
 ])
   .then((result) => console.log(result))
   .catch((error) => console.error("Error: Promise failed", error));
+
+// Below is Promise combinators - promise.race - returns the one which
+// fails or succeeds first.
+
+// Promise.race([
+//   importantAction1("I would say that,"),
+//   importantAction2("this example is awesome!"),
+//   importantAction3("Trying to appreciate promises!"),
+//   importantAction3("Now I understand promise chaining, phew!!"),
+// ])
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error("Error: Promise failed", error));
 
 // Below is Promise combinators - promise.all - even if one of the promise fails,
 // the whole thing fails.
