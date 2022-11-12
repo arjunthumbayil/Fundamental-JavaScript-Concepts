@@ -1,6 +1,6 @@
 //Promises in JavaScript
 
-//Question 5 - What is the output?
+//Question 6 - What is the output?
 
 function job(state) {
   return new Promise(function (resolve, reject) {
@@ -12,26 +12,88 @@ function job(state) {
   });
 }
 
-let promise = job(true);
+let promise = job(true); //resolve("success")
 
 promise
   .then(function (data) {
-    console.log(data);
-    return job(false);
-  })
-  .catch(function (error) {
-    console.log(error);
-    return "error caught"; /* this catch will behave like a resolved promise as it is returning a string */
-  })
-  .then(function (data) {
-    console.log(data);
+    console.log(data); // success
     return job(true);
   })
+  .then(function (data) {
+    if (data !== "victory") {
+      throw "Defeat"; //as this is an error it will go to the next immediate catch block
+    }
+    return job(true); // this is ignored
+  })
+  .then(function (data) {
+    console.log(data); // this .then block is also ignored because of the throw "defeat"
+  })
   .catch(function (error) {
-    console.log(
-      error
-    ); /* As the job(true) returned from .then above resolves to success, it wont enter this catch block. */
+    console.log(error); // Defeat
+    return job(false); //reject("error")
+  })
+  .then(function (data) {
+    //block ignored bcos of above reject
+    return job(true);
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error); // error
+    return "Error caught"; /*This is a resolved promise so goes to next .then block */
+  })
+  .then(function (data) {
+    console.log(data); //Error caught
+    return new Error("test"); // this is not a reject, it just resoves to an error so the next .then block
+  })
+  .then(function (data) {
+    // block ignored
+    console.log("Success: ", data.message); //Success: test
+  })
+  .catch(function (data) {
+    console.log("Error: ", data.message);
   });
+
+/* Correct Output
+success
+Defeat
+error
+Error caught
+Success: test
+
+ */
+
+//Question 5 - What is the output?
+
+// function job(state) {
+//   return new Promise(function (resolve, reject) {
+//     if (state) {
+//       resolve("success");
+//     } else {
+//       reject("error");
+//     }
+//   });
+// }
+
+// let promise = job(true);
+
+// promise
+//   .then(function (data) {
+//     console.log(data);
+//     return job(false);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//     return "error caught"; /* this catch will behave like a resolved promise as it is returning a string */
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//     return job(true);
+//   })
+//   .catch(function (error) {
+//     console.log(
+//       error
+//     ); /* As the job(true) returned from .then above resolves to success, it wont enter this catch block. */
+//   });
 
 /* Correct Output
 success
