@@ -1,20 +1,54 @@
 //Promises in JavaScript
 
+//Question 8 - Rewrite this code using async/await instead of .then/catch
+
+// function loadJson(url) {
+//   return fetch(url).then((response) => {
+//     if (response.status == 200) {
+//       return response.json();
+//     } else {
+//       throw new Error(response.status);
+//     }
+//   });
+// }
+
+loadJson("https://fakeurl.com/no-such-user.json").catch((err) =>
+  console.log("This is the error: " + err)
+);
+
+//This is the solution
+
+async function loadJson(url) {
+  const response = await fetch(url);
+
+  if (response.status == 200) {
+    let json = await response.json();
+    return json;
+  } else {
+    throw new Error(response.status);
+  }
+}
+
+/* Correct Output
+Qn 8 answer is above.
+
+ */
+
 //Question 7 - What is the output?
 
-const firstPromise = new Promise((resolve, reject) => {
-  return resolve("First!");
-});
+// const firstPromise = new Promise((resolve, reject) => {
+//   return resolve("First!");
+// });
 
-const secondPromise = new Promise((resolve, reject) => {
-  return resolve(firstPromise);
-});
+// const secondPromise = new Promise((resolve, reject) => {
+//   return resolve(firstPromise);
+// });
 
-secondPromise
-  .then((res) => {
-    return res;
-  })
-  .then((res) => console.log(res));
+// secondPromise
+//   .then((res) => {
+//     return res;
+//   })
+//   .then((res) => console.log(res));
 
 /* Correct Output
 First!
