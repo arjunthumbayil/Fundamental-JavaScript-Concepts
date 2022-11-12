@@ -17,15 +17,15 @@ function importantAction2(msg) {
 function importantAction3(msg) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(`Step 3 - ${msg}`);
-    }, 1000);
+      reject(`Step 3 - ${msg}`);
+    }, 10);
   });
 }
 
-// Below is Promise combinators - promise.all - even if one of the promise fails,
-// the whole thing fails.
+// Below is Promise combinators - promise.race - retuens the one which
+// fails or succeeds first.
 
-Promise.all([
+Promise.race([
   importantAction1("I would say that,"),
   importantAction2("this example is awesome!"),
   importantAction3("Trying to appreciate promises!"),
@@ -33,6 +33,18 @@ Promise.all([
 ])
   .then((result) => console.log(result))
   .catch((error) => console.error("Error: Promise failed", error));
+
+// Below is Promise combinators - promise.all - even if one of the promise fails,
+// the whole thing fails.
+
+// Promise.all([
+//   importantAction1("I would say that,"),
+//   importantAction2("this example is awesome!"),
+//   importantAction3("Trying to appreciate promises!"),
+//   importantAction3("Now I understand promise chaining, phew!!"),
+// ])
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error("Error: Promise failed", error));
 
 // Below is the promise chaining
 
