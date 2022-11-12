@@ -1,31 +1,71 @@
 //Promises in JavaScript
 
-//Question 4 - What is the output?
+//Question 5 - What is the output?
 
-function job() {
+function job(state) {
   return new Promise(function (resolve, reject) {
-    reject();
+    if (state) {
+      resolve("success");
+    } else {
+      reject("error");
+    }
   });
 }
 
-let promise = job();
+let promise = job(true);
 
 promise
-  .then(function () {
-    console.log("success 1");
+  .then(function (data) {
+    console.log(data);
+    return job(false);
   })
-  .then(function () {
-    console.log("success 2");
+  .catch(function (error) {
+    console.log(error);
+    return "error caught"; /* this catch will behave like a resolved promise as it is returning a string */
   })
-  .then(function () {
-    console.log("success 3");
+  .then(function (data) {
+    console.log(data);
+    return job(true);
   })
-  .catch(function () {
-    console.log("error 1");
-  })
-  .then(function () {
-    console.log("success 4");
+  .catch(function (error) {
+    console.log(
+      error
+    ); /* As the job(true) returned from .then above resolves to success, it wont enter this catch block. */
   });
+
+/* Correct Output
+success
+error
+error caught
+
+ */
+
+//Question 4 - What is the output?
+
+// function job() {
+//   return new Promise(function (resolve, reject) {
+//     reject();
+//   });
+// }
+
+// let promise = job();
+
+// promise
+//   .then(function () {
+//     console.log("success 1");
+//   })
+//   .then(function () {
+//     console.log("success 2");
+//   })
+//   .then(function () {
+//     console.log("success 3");
+//   })
+//   .catch(function () {
+//     console.log("error 1");
+//   })
+//   .then(function () {
+//     console.log("success 4");
+//   });
 
 /* Correct Output
 error 1
