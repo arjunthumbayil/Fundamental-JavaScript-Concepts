@@ -1,23 +1,57 @@
 //Promises in JavaScript
 
+//Question 4 - What is the output?
+
+function job() {
+  return new Promise(function (resolve, reject) {
+    reject();
+  });
+}
+
+let promise = job();
+
+promise
+  .then(function () {
+    console.log("success 1");
+  })
+  .then(function () {
+    console.log("success 2");
+  })
+  .then(function () {
+    console.log("success 3");
+  })
+  .catch(function () {
+    console.log("error 1");
+  })
+  .then(function () {
+    console.log("success 4");
+  });
+
+/* Correct Output
+error 1
+success 4
+
+Got right till 'error 1' part
+ */
+
 //Question 3 - What is the output?
 
-console.log("start");
+// console.log("start");
 
-const fn = () => {
-  return new Promise((resolve, reject) => {
-    console.log(1);
-    resolve("success");
-  });
-};
+// const fn = () => {
+//   return new Promise((resolve, reject) => {
+//     console.log(1);
+//     resolve("success");
+//   });
+// };
 
-console.log("middle");
+// console.log("middle");
 
-fn().then((res) => {
-  console.log(res);
-});
+// fn().then((res) => {
+//   console.log(res);
+// });
 
-console.log("end");
+// console.log("end");
 
 /* Correct Output
 start
