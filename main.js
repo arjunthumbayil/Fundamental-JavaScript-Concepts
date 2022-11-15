@@ -1,5 +1,15 @@
 //Promises in JavaScript
 
+//Question 9 - Solves Promise Recursively
+
+function promiseRecurse(funcPromise) {
+  //write implementation here
+}
+
+/* Correct Output
+
+ */
+
 //Question 8 - Rewrite this code using async/await instead of .then/catch
 
 // function loadJson(url) {
@@ -12,22 +22,22 @@
 //   });
 // }
 
-loadJson("https://fakeurl.com/no-such-user.json").catch((err) =>
-  console.log("This is the error: " + err)
-);
+// loadJson("https://fakeurl.com/no-such-user.json").catch((err) =>
+//   console.log("This is the error: " + err)
+// );
 
-//This is the solution
+// //This is the solution
 
-async function loadJson(url) {
-  const response = await fetch(url);
+// async function loadJson(url) {
+//   const response = await fetch(url);
 
-  if (response.status == 200) {
-    let json = await response.json();
-    return json;
-  } else {
-    throw new Error(response.status);
-  }
-}
+//   if (response.status == 200) {
+//     let json = await response.json();
+//     return json;
+//   } else {
+//     throw new Error(response.status);
+//   }
+// }
 
 /* Correct Output
 Qn 8 answer is above.
