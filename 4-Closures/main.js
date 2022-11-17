@@ -1,20 +1,37 @@
 //Closure in JavaScript
 
-//Question 1 - What will be logged to console?
+//Question 2 - Write a function that would allow you to do this.
 
-let count = 0;
-(function printCount() {
-  if (count === 0) {
-    let count = 1; //Shadowing
-    console.log(count);
-  } // block scope of let ends here.
-  console.log(count);
-})();
+function createBase(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+var addsix = createBase(6);
+console.log(addsix(10)); // returns 16
+console.log(addsix(21)); // returns 27
 
 /* Correct Output
-1
-0
+16
+27
  */
+
+// //Question 1 - What will be logged to console?
+
+// let count = 0;
+// (function printCount() {
+//   if (count === 0) {
+//     let count = 1; //Shadowing
+//     console.log(count);
+//   } // block scope of let ends here.
+//   console.log(count);
+// })();
+
+// /* Correct Output
+// 1
+// 0
+//  */
 
 //// setTimeout(
 //   () => (document.getElementById("text").innerHTML = "This is new testing..."),
