@@ -1,10 +1,10 @@
-////Promises in JavaScript
+//Promises in JavaScript
 
 //Question 9 - Solves Promise Recursively
 
-function promiseRecurse(funcPromise) {
-  //write implementation here
-}
+// function promiseRecurse(funcPromise) {
+//   //write implementation here
+// }
 
 /* Correct Output
 
