@@ -1,5 +1,35 @@
 //Closure in JavaScript
 
+//Question 4 - Block Scope and SetTimeout.
+
+//case 4 is same as case 3, but in the IIFE (Immediately invoked function expression)way
+// for (var i = 0; i < 3; i++) {
+//   (function (i) {
+//     setTimeout(() => console.log(i), 1000);
+//   })(i);
+// }
+
+//case 3
+// for (var i = 0; i < 3; i++) {
+//   function inner(i) {
+//     setTimeout(() => console.log(i), 1000);
+//   }
+//   inner(i);
+// }
+
+//case 2
+// for (let i = 0; i < 3; i++) {
+//   setTimeout(() => console.log(i), 1000);
+// }
+
+//case 1
+// for (var i = 0; i < 3; i++) {
+//   setTimeout(() => console.log(i), 1000);
+// }
+/* Correct Output
+
+*/
+
 //Question 3 - Time Optimization with Closures.
 
 // With closures - Check for the logged time output.
