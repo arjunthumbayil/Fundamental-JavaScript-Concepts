@@ -1,4 +1,4 @@
-// const Obj = { name: "abc", marks: 99, address: "bcd_street" };
+//// const Obj = { name: "abc", marks: 99, address: "bcd_street" };
 // console.log(JSON.stringify(Obj));
 // console.log(JSON.stringify(Obj, ["marks"]));
 // console.log(JSON.parse(JSON.stringify(Obj, ["marks"])));
