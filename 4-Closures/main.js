@@ -1,22 +1,41 @@
 //Closure in JavaScript
 
+//Question 6 - What is Module Pattern?
+
+var Module = (function () {
+  function privateMethod() {
+    //private method
+    console.log("private");
+  }
+
+  return {
+    publicMethod: function () {
+      //can call private method
+      console.log("public");
+    },
+  };
+})();
+
+Module.publicMethod();
+Module.privateMethod();
+
 //Question 5 - How would you use closure to create a private counter?
 
-function counter() {
-  var counter = 0;
-  function add(increment) {
-    counter += increment;
-  }
-  function retrive() {
-    return "Counter = " + counter;
-  }
-  return { add, retrive };
-}
-const c = counter();
-c.add(5);
-c.add(10);
-c.add(15);
-console.log(c.retrive());
+// function counter() {
+//   var counter = 0;
+//   function add(increment) {
+//     counter += increment;
+//   }
+//   function retrive() {
+//     return "Counter = " + counter;
+//   }
+//   return { add, retrive };
+// }
+// const c = counter();
+// c.add(5);
+// c.add(10);
+// c.add(15);
+// console.log(c.retrive());
 /* Correct Output
 30 i.e. 5+10+15
 */
