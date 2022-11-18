@@ -1,30 +1,81 @@
 //Closure in JavaScript
 
-//Question 8 - Make a once function pollyfill (generalization on qn. 7).
+//Question 9 - Memoize polyfill
 
-function once(callback, context) {
-  let ran;
-  return function () {
-    if (callback) {
-      ran = callback.apply(context || this, arguments);
-      callback = null;
+function myMemoize(fn, context) {
+  const res = {};
+  return function (...args) {
+    var argsCache = JSON.stringify(args);
+    if (!res[argsCache]) {
+      res[argsCache] = fn.call(context || this, ...args);
     }
-    return ran;
+    return res[argsCache];
   };
 }
 
-const hello = once(() => console.log("hello"));
-hello();
-hello();
-hello();
-const hello2 = once((a, b) => console.log("hello", a, b));
-hello2(1, 2);
-hello2(1, 2);
-hello2(1, 2);
+const clumsyProduct = (num1, num2) => {
+  for (let i = 0; i < 100000000; i++) {}
+  return num1 * num2;
+};
+// without memoize
+
+console.time("first call");
+console.log(clumsyProduct(10, 999));
+console.timeEnd("first call");
+
+console.time("second call");
+console.log(clumsyProduct(10, 999));
+console.timeEnd("second call");
+
+// with memoize
+
+const memoizedClumsyProduct = myMemoize(clumsyProduct);
+console.time("1st call");
+console.log(memoizedClumsyProduct(10, 999));
+console.timeEnd("1st call");
+
+console.time("2nd call");
+console.log(memoizedClumsyProduct(10, 999));
+console.timeEnd("2nd call");
+
+/* Correct Output
+9990
+1st call: 93.878173828125 ms
+9990
+2nd call: 0.069091796875 ms  //memoized version
+9990
+first call: 95.217041015625 ms
+9990
+second call: 59.853271484375 ms
+
+*/
+
+//Question 8 - Make a once function polyfill (generalization on qn. 7).
+
+// function once(callback, context) {
+//   let ran;
+//   return function () {
+//     if (callback) {
+//       ran = callback.apply(context || this, arguments);
+//       callback = null;
+//     }
+//     return ran;
+//   };
+// }
+
+// const hello = once(() => console.log("hello"));
+// hello();
+// hello();
+// hello();
+// const hello2 = once((a, b) => console.log("hello", a, b));
+// hello2(1, 2);
+// hello2(1, 2);
+// hello2(1, 2);
 
 /* Correct Output
 hello     // is printed only once eventhough it is called thrice.
 hello 1 2 // same, logs to the console only single time. 
+
 */
 
 //Question 7 - Make this run only once.
