@@ -1,23 +1,67 @@
 //Closure in JavaScript
 
+//Question 7 - Make this run only once.
+
+// let view;
+// function doSomething() {
+//   view = "Something is done.";
+//   console.log("Yes! " + view);
+// }
+// doSomething();
+// doSomething();
+// doSomething();
+// doSomething();
+
+// let view;
+// function doSomething() {
+//   let counter = 0;
+
+//   return function () {
+//     if (counter > 0) {
+//       console.log("Already done.");
+//     } else {
+//       view = "Something is done.";
+//       console.log("Yes! " + view);
+//       counter++;
+//     }
+//   };
+// }
+
+// const task = doSomething();
+// task();
+// task();
+// task();
+
+/* Correct Output
+Yes! Something is done.
+Already done.
+Already done
+
+*/
+
 //Question 6 - What is Module Pattern?
 
-var Module = (function () {
-  function privateMethod() {
-    //private method
-    console.log("private");
-  }
+// var Module = (function () {
+//   function privateMethod() {
+//     //private method
+//     console.log("private");
+//   }
 
-  return {
-    publicMethod: function () {
-      //can call private method
-      console.log("public");
-    },
-  };
-})();
+//   return {
+//     publicMethod: function () {
+//       //can call private method
+//       console.log("public");
+//     },
+//   };
+// })();
 
-Module.publicMethod();
-Module.privateMethod();
+// Module.publicMethod();
+// Module.privateMethod();
+
+/* Correct Output
+public
+Uncaught TypeError: Module.privateMethod is not a function at main.js:20:8
+*/
 
 //Question 5 - How would you use closure to create a private counter?
 
