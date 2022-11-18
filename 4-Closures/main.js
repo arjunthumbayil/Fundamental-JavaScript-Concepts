@@ -1,5 +1,32 @@
 //Closure in JavaScript
 
+//Question 8 - Make a once function pollyfill (generalization on qn. 7).
+
+function once(callback, context) {
+  let ran;
+  return function () {
+    if (callback) {
+      ran = callback.apply(context || this, arguments);
+      callback = null;
+    }
+    return ran;
+  };
+}
+
+const hello = once(() => console.log("hello"));
+hello();
+hello();
+hello();
+const hello2 = once((a, b) => console.log("hello", a, b));
+hello2(1, 2);
+hello2(1, 2);
+hello2(1, 2);
+
+/* Correct Output
+hello     // is printed only once eventhough it is called thrice.
+hello 1 2 // same, logs to the console only single time. 
+*/
+
 //Question 7 - Make this run only once.
 
 // let view;
