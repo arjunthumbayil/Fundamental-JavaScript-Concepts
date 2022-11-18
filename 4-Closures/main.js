@@ -1,42 +1,55 @@
 //Closure in JavaScript
 
-//Question 9 - Memoize polyfill
+//Question 10 - Difference between Closure and Scope.
 
-function myMemoize(fn, context) {
-  const res = {};
-  return function (...args) {
-    var argsCache = JSON.stringify(args);
-    if (!res[argsCache]) {
-      res[argsCache] = fn.call(context || this, ...args);
-    }
-    return res[argsCache];
-  };
-}
+/* Whenever we create a function within another function, then the inner function 
+is the closure. This closure is usually returned so it can use the outer function's
+variables at a later time.
 
-const clumsyProduct = (num1, num2) => {
-  for (let i = 0; i < 100000000; i++) {}
-  return num1 * num2;
-};
-// without memoize
+ Scope in JavaScript defines what variable  you have access to. There are two kinds:
+ Global Scope and Local Scope. 
 
-console.time("first call");
-console.log(clumsyProduct(10, 999));
-console.timeEnd("first call");
+ *In case of Closures, there is: Global scope, outer scope and local scope.
 
-console.time("second call");
-console.log(clumsyProduct(10, 999));
-console.timeEnd("second call");
+*/
 
-// with memoize
+//Question 9 - Memoize polyfill (caching or memoization).
 
-const memoizedClumsyProduct = myMemoize(clumsyProduct);
-console.time("1st call");
-console.log(memoizedClumsyProduct(10, 999));
-console.timeEnd("1st call");
+// function myMemoize(fn, context) {
+//   const res = {};
+//   return function (...args) {
+//     var argsCache = JSON.stringify(args);
+//     if (!res[argsCache]) {
+//       res[argsCache] = fn.call(context || this, ...args);
+//     }
+//     return res[argsCache];
+//   };
+// }
 
-console.time("2nd call");
-console.log(memoizedClumsyProduct(10, 999));
-console.timeEnd("2nd call");
+// const clumsyProduct = (num1, num2) => {
+//   for (let i = 0; i < 100000000; i++) {}
+//   return num1 * num2;
+// };
+// // without memoize
+
+// console.time("first call");
+// console.log(clumsyProduct(10, 999));
+// console.timeEnd("first call");
+
+// console.time("second call");
+// console.log(clumsyProduct(10, 999));
+// console.timeEnd("second call");
+
+// // with memoize
+
+// const memoizedClumsyProduct = myMemoize(clumsyProduct);
+// console.time("1st call");
+// console.log(memoizedClumsyProduct(10, 999));
+// console.timeEnd("1st call");
+
+// console.time("2nd call");
+// console.log(memoizedClumsyProduct(10, 999));
+// console.timeEnd("2nd call");
 
 /* Correct Output
 9990
