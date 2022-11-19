@@ -3,7 +3,23 @@
 the next argument. It is a conversion of functions from callable as f(a,b) -> f(a)(b).
 And curried functions are constructed by chaining closures by immediately returning their
 inner functions simultaneously.
+
 */
+
+//Question 3 - Infinite Currying -> add(1)(2)(3)....(n)
+
+function add(x) {
+  return function (y) {
+    if (y) return add(x + y);
+    return x;
+  };
+}
+
+console.log(add(5)(2)(4)(8)());
+
+/* Correct Output
+19
+ */
 
 /*Question 2 -
    evaluate("add")(4)(2) => 6
