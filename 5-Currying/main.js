@@ -12,25 +12,39 @@ inner functions simultaneously.
    evaluate("substract")(4)(2) => 2
    */
 
-function evaluate(operation) {
-  return function (x) {
-    return function (y) {
-      if (operation === "add") return x + y;
-      else if (operation === "multiply") return x * y;
-      else if (operation === "divide") return x / y;
-      else if (operation === "substract") return x - y;
-      else return "Invalid! Please provide a valid operation(+,-,/,*).";
-    };
-  };
-}
+// function evaluate(operation) {
+//   return function (x) {
+//     return function (y) {
+//       if (operation === "add") return x + y;
+//       else if (operation === "multiply") return x * y;
+//       else if (operation === "divide") return x / y;
+//       else if (operation === "substract") return x - y;
+//       else return "Invalid! Please provide a valid operation(+,-,/,*).";
+//     };
+//   };
+// }
 
-console.log(evaluate("add")(4)(2));
-console.log(evaluate("multiply")(4)(2));
-console.log(evaluate("divide")(4)(2));
-console.log(evaluate("substract")(4)(2));
-console.log(evaluate("integrate")(4)(2));
+// console.log(evaluate("add")(4)(2));
+// console.log(evaluate("multiply")(4)(2));
+// console.log(evaluate("divide")(4)(2));
+// console.log(evaluate("substract")(4)(2));
+// console.log(evaluate("integrate")(4)(2));
+
+//Use case of Currying
+
+// const product = evaluate("multiply");
+// console.log(product(2)(3));
+// console.log(product(233)(322));
 
 /* Correct Output
+6
+8
+2
+2
+
+6
+75026
+Invalid! Please provide a valid operation(+,-,/,*).
 
  */
 
