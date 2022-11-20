@@ -6,17 +6,30 @@ inner functions simultaneously.
 
 */
 
-//Question 4 - Currying vs Partial Application
+//Question 5 - Manipulating DOM
 
-function sum(a) {
-  return function (b, c) {
-    return a + b + c;
+function updateElementText(id) {
+  return function (content) {
+    document.querySelector("#" + id).textContent = content;
   };
 }
-const x = sum(10);
-console.log(x(5, 6));
-//or
-console.log(sum(20)(1, 4));
+
+const updateHeader = updateElementText("change");
+updateHeader("Currying is lit!");
+updateHeader("Currying is confusing for the newb!");
+updateHeader("Currying");
+
+//Question 4 - Currying vs Partial Application
+
+// function sum(a) {
+//   return function (b, c) {
+//     return a + b + c;
+//   };
+// }
+// const x = sum(10);
+// console.log(x(5, 6));
+// //or
+// console.log(sum(20)(1, 4));
 
 //This is called partial application
 
