@@ -6,16 +6,30 @@ inner functions simultaneously.
 
 */
 
-//Question 3 - Infinite Currying -> add(1)(2)(3)....(n)
+//Question 4 - Currying vs Partial Application
 
-function add(x) {
-  return function (y) {
-    if (y) return add(x + y);
-    return x;
+function sum(a) {
+  return function (b, c) {
+    return a + b + c;
   };
 }
+const x = sum(10);
+console.log(x(5, 6));
+//or
+console.log(sum(20)(1, 4));
 
-console.log(add(5)(2)(4)(8)());
+//This is called partial application
+
+//Question 3 - Infinite Currying -> add(1)(2)(3)....(n)
+
+// function add(x) {
+//   return function (y) {
+//     if (y) return add(x + y);
+//     return x;
+//   };
+// }
+
+// console.log(add(5)(2)(4)(8)());
 
 /* Correct Output
 19
