@@ -6,20 +6,41 @@ inner functions simultaneously.
 
 */
 
-//Question 5 - Manipulating DOM
+// Question 6 - Currying Implementation
+// converts f(a,b,c) into f(a)(b)(c)
 
-function updateElementText(id) {
-  return function (content) {
-    document.querySelector("#" + id).textContent = content;
+function curry(func) {
+  return function curriedFunc(...args) {
+    if (args.length >= func.length) {
+      return func(...args);
+    } else {
+      return function (...next) {
+        return curriedFunc(...args, ...next);
+      };
+    }
   };
 }
 
-const updateHeader = updateElementText("change");
-updateHeader("Currying is lit!");
-updateHeader("Currying is confusing for the newb!");
-updateHeader("Currying");
+const sum = (a, b, c) => a + b + c;
 
-//Question 4 - Currying vs Partial Application
+const totalSum = curry(sum);
+
+console.log(totalSum(5)(5)(5));
+
+// Question 5 - Manipulating DOM
+
+// function updateElementText(id) {
+//   return function (content) {
+//     document.querySelector("#" + id).textContent = content;
+//   };
+// }
+
+// const updateHeader = updateElementText("change");
+// updateHeader("Currying is lit!");
+// updateHeader("Currying is confusing for the newb!");
+// updateHeader("Currying");
+
+// Question 4 - Currying vs Partial Application
 
 // function sum(a) {
 //   return function (b, c) {
@@ -33,7 +54,7 @@ updateHeader("Currying");
 
 //This is called partial application
 
-//Question 3 - Infinite Currying -> add(1)(2)(3)....(n)
+// Question 3 - Infinite Currying -> add(1)(2)(3)....(n)
 
 // function add(x) {
 //   return function (y) {
