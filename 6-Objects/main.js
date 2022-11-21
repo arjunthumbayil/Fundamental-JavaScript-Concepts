@@ -1,22 +1,45 @@
-//Objects in JavaScript
+// Objects in JavaScript
 /* An Object is a collection of properties, and a property is an association between
 a name(or key) and a value. A property's value can be a function, in which case the 
 property is known as a method.
 */
 
-//Question 1 - What's the output?
+/* Question 2 - Create a function multiplyByTwo(obj) that multiples all numeric
+property values of nums by 2.*/
 
-const obj = {
-  a: "one",
-  b: "two",
-  a: "three",
+let nums = {
+  a: 100,
+  b: 200,
+  title: "My nums",
 };
-console.log(obj);
+
+function multiplyByTwo(nums) {
+  for (key in nums) {
+    if (typeof nums[key] === "number") {
+      nums[key] *= 2;
+    }
+  }
+
+  return nums;
+}
+
+console.log(multiplyByTwo(nums));
 
 /* Correct Output
-Object
-a: "three"
-b: "two"
+
+ */
+
+/* Question 1 - What's the output? */
+
+// const obj = {
+//   a: "one",
+//   b: "two",
+//   a: "three",
+// };
+// console.log(obj);
+
+/* Correct Output
+{ a: "three",b: "two"}
  */
 
 //// const Obj = { name: "abc", marks: 99, address: "bcd_street" };
@@ -39,21 +62,7 @@ b: "two"
 // console.log(a[b]) //456
 // console.log(a[c]) //456
 
-// function multiplyByTwo (nums) {
-
-//   for(key in nums){
-//     if(typeof nums[key]==='number'){
-//       nums[key] *= 2
-//     }
-//   }
-
-//   return nums
-
-// }
-
-// console.log(multiplyByTwo({a:1,b:2, c:'this should work'}))
-
-//Question
+/* Question */
 
 /* Correct Output
 
