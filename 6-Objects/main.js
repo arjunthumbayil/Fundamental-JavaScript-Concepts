@@ -1,3 +1,24 @@
+//Objects in JavaScript
+/* An Object is a collection of properties, and a property is an association between
+a name(or key) and a value. A property's value can be a function, in which case the 
+property is known as a method.
+*/
+
+//Question 1 - What's the output?
+
+const obj = {
+  a: "one",
+  b: "two",
+  a: "three",
+};
+console.log(obj);
+
+/* Correct Output
+Object
+a: "three"
+b: "two"
+ */
+
 //// const Obj = { name: "abc", marks: 99, address: "bcd_street" };
 // console.log(JSON.stringify(Obj));
 // console.log(JSON.stringify(Obj, ["marks"]));
@@ -31,3 +52,9 @@
 // }
 
 // console.log(multiplyByTwo({a:1,b:2, c:'this should work'}))
+
+//Question
+
+/* Correct Output
+
+ */

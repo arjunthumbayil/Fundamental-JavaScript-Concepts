@@ -6,26 +6,29 @@ inner functions simultaneously.
 
 */
 
+// Question 7 - Currying Implementation
+// converts f(a,b,c) into f(a)(b)(c)
+
 // Question 6 - Currying Implementation
 // converts f(a,b,c) into f(a)(b)(c)
 
-function curry(func) {
-  return function curriedFunc(...args) {
-    if (args.length >= func.length) {
-      return func(...args);
-    } else {
-      return function (...next) {
-        return curriedFunc(...args, ...next);
-      };
-    }
-  };
-}
+// function curry(func) {
+//   return function curriedFunc(...args) {
+//     if (args.length >= func.length) {
+//       return func(...args);
+//     } else {
+//       return function (...next) {
+//         return curriedFunc(...args, ...next);
+//       };
+//     }
+//   };
+// }
 
-const sum = (a, b, c) => a + b + c;
+// const sum = (a, b, c) => a + b + c;
 
-const totalSum = curry(sum);
+// const totalSum = curry(sum);
 
-console.log(totalSum(5)(5)(5));
+// console.log(totalSum(5)(5)(5));
 
 // Question 5 - Manipulating DOM
 
@@ -125,7 +128,7 @@ Invalid! Please provide a valid operation(+,-,/,*).
 // console.log(sum(2)(6)(1));
 
 /* Correct Output
-
+9
 */
 
 //Question
