@@ -3,12 +3,31 @@
 a name(or key) and a value. A property's value can be a function, in which case the 
 property is known as a method.*/
 
+/* Question - 7 What is the output?*/
+
+const settings = {
+  username: "name",
+  level: 10,
+  health: 90,
+};
+
+const data = JSON.stringify(settings, ["level", "health"]);
+console.log(data);
+
+/* Correct Output
+{
+  level: 10,
+  health: 90,
+};
+
+ */
+
 /* Question - 6 What is the output? */
 
-const user = { name: "Lydia", age: 21 };
-const admin = { admin: true, ...user };
+// const user = { name: "Lydia", age: 21 };
+// const admin = { admin: true, ...user };
 
-console.log(admin);
+// console.log(admin);
 
 /* Correct Output
 
