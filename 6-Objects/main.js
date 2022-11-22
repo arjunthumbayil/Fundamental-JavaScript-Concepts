@@ -23,9 +23,17 @@ function multiplyByTwo(nums) {
   return nums;
 }
 
-console.log(multiplyByTwo(nums));
+multiplyByTwo(nums);
+console.log(nums);
 
 /* Correct Output
+
+Object 
+  a: 200
+  b: 400
+  title: "My nums"
+  [[Prototype]]: Object
+
 
  */
 
