@@ -3,16 +3,36 @@
 a name(or key) and a value. A property's value can be a function, in which case the 
 property is known as a method.*/
 
-/* Question - 7 What is the output?*/
+/* Question - 8 What is the output?*/
 
-const settings = {
-  username: "name",
-  level: 10,
-  health: 90,
+const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => 2 * Math.PI * this.radius, // arrow function 'this' refers to the window object
 };
 
-const data = JSON.stringify(settings, ["level", "health"]);
-console.log(data);
+console.log(shape.diameter());
+console.log(shape.perimeter());
+
+/* Correct Output
+
+20 
+NaN
+
+ */
+
+/* Question - 7 What is the output?*/
+
+// const settings = {
+//   username: "name",
+//   level: 10,
+//   health: 90,
+// };
+
+// const data = JSON.stringify(settings, ["level", "health"]);
+// console.log(data);
 
 /* Correct Output
 {
