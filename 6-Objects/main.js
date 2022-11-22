@@ -1,12 +1,24 @@
 // Objects in JavaScript
 /* An Object is a collection of properties, and a property is an association between
 a name(or key) and a value. A property's value can be a function, in which case the 
-property is known as a method.
-*/
+property is known as a method.*/
+
+/* Question - 6 What is the output? */
+
+const user = { name: "Lydia", age: 21 };
+const admin = { admin: true, ...user };
+
+console.log(admin);
+
+/* Correct Output
+
+{ admin: true, name: "Lydia", age: 21 }
+
+ */
 
 /* Question 5 - What is the output?*/
 
-console.log([..."Lydia"]);
+// console.log([..."Lydia"]);
 
 /* Correct Output
 ["L", "y", "d", "i", "a"]
