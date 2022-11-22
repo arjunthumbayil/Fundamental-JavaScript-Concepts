@@ -5,16 +5,16 @@ property is known as a method.*/
 
 /* Question - 8 What is the output?*/
 
-const shape = {
-  radius: 10,
-  diameter() {
-    return this.radius * 2;
-  },
-  perimeter: () => 2 * Math.PI * this.radius, // arrow function 'this' refers to the window object
-};
+// const shape = {
+//   radius: 10,
+//   diameter() {
+//     return this.radius * 2;
+//   },
+//   perimeter: () => 2 * Math.PI * this.radius, // arrow function 'this' refers to the window object
+// };
 
-console.log(shape.diameter());
-console.log(shape.perimeter());
+// console.log(shape.diameter());
+// console.log(shape.perimeter());
 
 /* Correct Output
 
