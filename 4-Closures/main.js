@@ -12,8 +12,8 @@ a function is created,at the creation time.
 is the closure. This closure is usually returned so it can use the outer function's
 variables at a later time.
 
- Scope in JavaScript defines what variable  you have access to. There are two kinds:
- Global Scope and Local Scope. 
+Scope in JavaScript defines what variable  you have access to. There are two kinds:
+Global Scope and Local Scope. 
 
  *In case of Closures, there is: Global scope, outer scope and local scope.
 
