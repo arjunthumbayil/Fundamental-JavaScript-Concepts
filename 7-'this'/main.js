@@ -1,15 +1,13 @@
-// 'this' keyword in JavaScript (Implicit binding)
+/* 'this' keyword in JavaScript (Implicit binding)
+Just like how we use the pronoun ‘this’ to reference something in English, in
+JavaScript the ‘this’ keyword is used to reference something — an object!
 
-/* 
-Implicit Binding
 Implicit Binding is applied when you invoke a function in an Object using the dot 
 notation. this in such scenarios will point to the object using which the function 
 was invoked. Or simply the object on the left side of the dot.
 
-Explicit Binding
 In Explicit Binding, you can force a function to use a certain object as its this.
-Explicit Binding can be applied using call(), apply(), and bind().
- */
+Explicit Binding can be applied using call(), apply(), and bind(). */
 
 /* Question 3 - What logs to console the following code snippet? */
 
