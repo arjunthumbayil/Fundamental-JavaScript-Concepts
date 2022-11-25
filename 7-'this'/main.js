@@ -12,19 +12,50 @@ was invoked. Or simply the object on the left side of the dot.
 In Explicit Binding, you can force a function to use a certain object as its this.
 Explicit Binding can be applied using call(), apply(), and bind(). */
 
-/* Question 4 - What logs to console of the following code snippet? */
+/* Question - 5 Create an object calculator with three methods:
+1-read() prompts for two values and saves them as object properties with
+names a and b respectively.
+2-sum() returns the sum of saved values.
+3-mul() multiplies saved values and returns the result.
 
-const user = {
-  name: "John",
-  greet() {
-    return `Hello, ${this.name}!`;
+*/
+
+let calculator = {
+  read(a, b) {
+    this.a = a;
+    this.b = b;
   },
-  farewell: () => {
-    return `Goodbye, ${this.name}!`;
+  sum() {
+    return this.a + this.b;
+  },
+  mul() {
+    return this.a * this.b;
   },
 };
-console.log(user.greet()); // What is logged?
-console.log(user.farewell()); // What is logged?
+
+calculator.read(5, 2);
+
+console.log(calculator.sum());
+console.log(calculator.mul());
+
+/* Correct Output
+7
+10
+ */
+
+/* Question 4 - What logs to console of the following code snippet? */
+
+// const user = {
+//   name: "John",
+//   greet() {
+//     return `Hello, ${this.name}!`;
+//   },
+//   farewell: () => {
+//     return `Goodbye, ${this.name}!`;
+//   },
+// };
+// console.log(user.greet());
+// console.log(user.farewell());
 
 /* Correct Output
 'Hello, John!' and 'Goodbye, undefined!' are logged to console.
