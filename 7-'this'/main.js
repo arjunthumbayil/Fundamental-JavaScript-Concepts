@@ -12,20 +12,52 @@ was invoked. Or simply the object on the left side of the dot.
 In Explicit Binding, you can force a function to use a certain object as its this.
 Explicit Binding can be applied using call(), apply(), and bind(). */
 
-/* Question 6 - Give output of the following code snippet.*/
+/* Question Question-9 Write the implementation of this calc()
+const result = calc.add(10).multiply(5).subtract(30).add(10)
+console.log(result.total) ---- What is logged? */
 
-var length = 4;
-function callback() {
-  console.log(this.length); // What is logged?
-}
-const object = {
-  length: 5,
-  method() {
-    console.log(arguments);
-    arguments[0]();
+var calc = {
+  total: 0,
+
+  add(a) {
+    this.total += a;
+    return this;
+  },
+  subtract(a) {
+    this.total -= a;
+    return this;
+  },
+  multiply(a) {
+    this.total *= a;
+    return this;
+  },
+  divide(a) {
+    this.total += a;
+    return this;
   },
 };
-object.method(callback, 2, 4);
+
+const result = calc.add(10).multiply(5).subtract(30).add(10);
+console.log(result.total);
+
+/* Correct Output
+
+ */
+
+/* Question 6 - Give output of the following code snippet.*/
+
+// var length = 4;
+// function callback() {
+//   console.log(this.length); // What is logged?
+// }
+// const object = {
+//   length: 5,
+//   method() {
+//     console.log(arguments);
+//     arguments[0]();
+//   },
+// };
+// object.method(callback, 2, 4);
 
 /* Correct Output
 3
