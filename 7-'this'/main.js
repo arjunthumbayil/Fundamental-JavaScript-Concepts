@@ -14,22 +14,25 @@ Explicit Binding can be applied using call(), apply(), and bind(). */
 
 /* Question 3 - What logs to console the following code snippet? */
 
-// const user = {
-//   name: "Rahul Kudiyal!",
-//   logMessage() {
-//     console.log(this.name);
-//   },
-// };
-// setTimeout(user.logMessage, 1000);
+const user = {
+  name: "Rahul Kudiyal",
+  logMessage() {
+    console.log(this.name);
+  },
+};
+setTimeout(user.logMessage, 1000);
 
 /* Correct Output
-Nothing on console or undefined, While setTimeout() function uses the object.logMessage
-as a callback, still, it invokes object.logMessage as a regular function, rather than
-a method.
+While setTimeout() function uses the object.logMessage as a callback,
+still, it invokes object.logMessage as a regular function, rather than a method.
 
-And during a regular function invocation this equals the global object which is window
-in the case of the browser environment.
+And during a regular function invocation this equals the global object which is
+window in the case of the browser environment.
 
+That's why console.log(this.message) inside logMessage method logs window.message, 
+which is undefined.
+
+How can you fix this code so that 'Rahul Kudiyal' is logged to console?
  */
 
 /* Question 2 - What is the result of accessing its ref? Why? */
