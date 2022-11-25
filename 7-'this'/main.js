@@ -12,15 +12,42 @@ was invoked. Or simply the object on the left side of the dot.
 In Explicit Binding, you can force a function to use a certain object as its this.
 Explicit Binding can be applied using call(), apply(), and bind(). */
 
-/* Question 3 - What logs to console the following code snippet? */
+/* Question 4 - What logs to console of the following code snippet? */
 
 const user = {
-  name: "Rahul Kudiyal",
-  logMessage() {
-    console.log(this.name);
+  name: "John",
+  greet() {
+    return `Hello, ${this.name}!`;
+  },
+  farewell: () => {
+    return `Goodbye, ${this.name}!`;
   },
 };
-setTimeout(user.logMessage, 1000);
+console.log(user.greet()); // What is logged?
+console.log(user.farewell()); // What is logged?
+
+/* Correct Output
+'Hello, John!' and 'Goodbye, undefined!' are logged to console.
+
+When calling object.greet(), inside the method greet() this value equals object
+because greet is a regular function. Thus object.greet() returns 'Hello, John!'.
+
+But farewell() is an arrow function, so [this value inside of an arrow function] always
+equals this of the outer scope.
+
+The outer scope of farewell() is the global scope, where this is the global object.
+Thus object.farewell() actually returns 'Goodbye, ${window.name}!', which evaluates 
+to 'Goodbye, undefined!' */
+
+/* Question 3 - What logs to console the following code snippet? */
+
+// const user = {
+//   name: "Rahul Kudiyal",
+//   logMessage() {
+//     console.log(this.name);
+//   },
+// };
+// setTimeout(user.logMessage, 1000);
 
 /* Correct Output
 While setTimeout() function uses the object.logMessage as a callback,
