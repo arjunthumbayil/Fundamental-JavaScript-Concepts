@@ -2,6 +2,9 @@
 Just like how we use the pronoun ‘this’ to reference something in English, in
 JavaScript the ‘this’ keyword is used to reference something — an object!
 
+this points to the owner of the function call, I repeat, THE FUNCTION CALL, and NOT 
+the function itself. The same function can have different owners in different scenarios.
+
 Implicit Binding is applied when you invoke a function in an Object using the dot 
 notation. this in such scenarios will point to the object using which the function 
 was invoked. Or simply the object on the left side of the dot.
