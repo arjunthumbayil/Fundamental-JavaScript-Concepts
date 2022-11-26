@@ -2,18 +2,35 @@
 
  */
 
-/* Question 3 - What is Apply? */
+/* Question 4 - What is the output? */
 
-function sayHello(age, profession) {
-  return "Hello " + this.name + " is " + age + " and is " + profession;
+const person = { name: "John" };
+
+function sayHi(age) {
+  return `${this.name} is ${age} years`;
 }
 
-var obj = { name: "John" };
+console.log(sayHi.call(person, 24)); //?
+console.log(sayHi.bind(person, 24)); //?
 
-const helloFn = sayHello.bind(obj); //We can reuse hellFn function in Bind
+/* Correct Output
+John is 24 years
+ƒ sayHi(age) {
+  return `${this.name} is ${age} years`;
+}*/
 
-console.log(helloFn(25, "a Software Engineer."));
-console.log(helloFn(29, "a Technical Lead."));
+/* Question 3 - What is Apply? */
+
+// function sayHello(age, profession) {
+//   return "Hello " + this.name + " is " + age + " and is " + profession;
+// }
+
+// var obj = { name: "John" };
+
+// const helloFn = sayHello.bind(obj); //We can reuse hellFn function in Bind
+
+// console.log(helloFn(25, "a Software Engineer."));
+// console.log(helloFn(29, "a Technical Lead."));
 
 /* Correct Output
 Hello John is 25 and is a Software Engineer.
