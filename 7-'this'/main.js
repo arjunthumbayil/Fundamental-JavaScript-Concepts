@@ -12,7 +12,7 @@ was invoked. Or simply the object on the left side of the dot.
 In Explicit Binding, you can force a function to use a certain object as its this.
 Explicit Binding can be applied using call(), apply(), and bind(). */
 
-/* Question Question-9 Write the implementation of this calc()
+/*Question-9 Write the implementation of this calc()
 const result = calc.add(10).multiply(5).subtract(30).add(10)
 console.log(result.total) ---- What is logged? */
 
