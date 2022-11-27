@@ -2,16 +2,22 @@
 
  */
 
+/* Question */
+
+/* Correct Output
+
+ */
+
 /* Question 4 - What is the output? */
 
-const person = { name: "John" };
+// const person = { name: "John" };
 
-function sayHi(age) {
-  return `${this.name} is ${age} years`;
-}
+// function sayHi(age) {
+//   return `${this.name} is ${age} years`;
+// }
 
-console.log(sayHi.call(person, 24)); //?
-console.log(sayHi.bind(person, 24)); //?
+// console.log(sayHi.call(person, 24)); //?
+// console.log(sayHi.bind(person, 24)); //?
 
 /* Correct Output
 John is 24 years
